@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>AutoCAD 2D Commands</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --primary-color: #0d6efd;
+                --secondary-color: #212529;
+            }
+            body {
+                font-family: "Poppins", sans-serif;
+                overflow-x: hidden;
+            }
+            .hero-section {
+                position: relative;
+                height: 85vh;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                color: white;
+            }
+            .hero-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.6);
+            }
+            .hero-content {
+                z-index: 10;
+                position: relative;
+                max-width: 600px;
+            }
+            .navbar {
+                transition: all 0.4s;
+            }
+            .navbar.scrolled {
+                background-color: #212529 !important;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            }
+            .section-title {
+                position: relative;
+                margin-bottom: 2.5rem;
+                font-weight: 700;
+            }
+            .section-title:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+                width: 50px;
+                height: 4px;
+                background-color: var(--primary-color);
+            }
+            .card {
+                border: none;
+                transition:
+                    transform 0.3s,
+                    box-shadow 0.3s;
+                border-radius: 0.5rem;
+                overflow: hidden;
+            }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            .command-card {
+                border-radius: 0.5rem;
+                overflow: hidden;
+                margin-bottom: 2rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+            .command-info {
+                padding: 1.5rem;
+            }
+            .command-title {
+                color: var(--primary-color);
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+            .client-logo {
+                height: 200px;
+                object-fit: cover;
+            }
+            .btn-primary {
+                padding: 0.75rem 1.5rem;
+                font-weight: 500;
+            }
+            footer {
+                background-color: #111;
+                color: #f8f9fa;
+            }
+            .scroll-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 100;
+                opacity: 0;
+                transition: all 0.3s;
+            }
+            .scroll-to-top.active {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body data-bs-spy="scroll" data-bs-target="#navbar">
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">
+                    <i class="fas fa-drafting-compass me-2"></i>AutoCAD Training
+                </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#beranda">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tujuan">Tujuan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#interface">Interface</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#perintah">Perintah</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#latihan">Latihan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#kontak">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section
+            id="beranda"
+            class="hero-section"
+            style="
+                background-image: url(&quot;https://storage.googleapis.com/a1aa/image/5aeb5457-2ae9-45a5-af2d-e6f87633299d.jpg&quot;);
+            "
+        >
+            <div class="hero-overlay"></div>
+            <div class="container h-100 d-flex align-items-center">
+                <div class="hero-content text-white">
+                    <h1 class="display-4 fw-bold mb-4">
+                        Menerapkan Perintah Gambar 2D pada AutoCAD
+                    </h1>
+                    <p class="lead">
+                        Penguasaan perintah dasar yang wajib dikuasai untuk meningkatkan
+                        produktivitas desain Anda
+                    </p>
+                    <a href="#perintah" class="btn btn-primary mt-4"
+                        >Jelajahi Perintah <i class="fas fa-arrow-right ms-2"></i
+                    ></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tujuan" class="py-5 bg-light">
+            <div class="container py-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <h2 class="section-title">Tujuan Pembelajaran</h2>
+                        <img
+                            src="https://storage.googleapis.com/a1aa/image/f56694d9-4125-4697-be4e-73277e4a01c8.jpg"
+                            alt="Technical drawing sketch"
+                            class="img-fluid rounded shadow-sm"
+                        />
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="card border-0 bg-white shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-start mb-4">
+                                    <div
+                                        class="bg-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                        style="width: 40px; height: 40px; min-width: 40px"
+                                    >
+                                        <span class="text-white fw-bold">01</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Mengenal antarmuka dasar AutoCAD</h5>
+                                        <p class="text-muted mb-0">
+                                            Pengenalan dan navigasi pada ribbon, drawing area, dan
+                                            panel lainnya
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-4">
+                                    <div
+                                        class="bg-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                        style="width: 40px; height: 40px; min-width: 40px"
+                                    >
+                                        <span class="text-white fw-bold">02</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">
+                                            Menggunakan perintah-perintah dasar untuk menggambar
+                                        </h5>
+                                        <p class="text-muted mb-0">
+                                            Mengaplikasikan LINE, CIRCLE, RECTANGLE, dan perintah
+                                            dasar lainnya
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <div
+                                        class="bg-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                        style="width: 40px; height: 40px; min-width: 40px"
+                                    >
+                                        <span class="text-white fw-bold">03</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">
+                                            Mengedit dan mengatur objek 2D sederhana
+                                        </h5>
+                                        <p class="text-muted mb-0">
+                                            Memodifikasi objek dengan MOVE, COPY, dan perintah
+                                            manipulasi lainnya
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interface" class="py-5 bg-dark text-white">
+            <div class="container py-4">
+                <h2 class="section-title text-white">User Interface AutoCAD</h2>
+                <div class="position-relative mt-5">
+                    <img
+                        src="img\AutoCAD UI.png"
+                        alt="AutoCAD interface"
+                        class="img-fluid rounded"
+                    />
+                    <div class="position-absolute" style="top: 40%; left: 30%">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary rounded-circle p-2">
+                                <i class="fas fa-mouse-pointer text-white"></i>
+                            </div>
+                            <div class="bg-white text-dark px-3 py-1 rounded ms-2">
+                                <strong>Drawing Area</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-absolute" style="top: 15%; right: 20%">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary rounded-circle p-2">
+                                <i class="fas fa-tools text-white"></i>
+                            </div>
+                            <div class="bg-white text-dark px-3 py-1 rounded ms-2">
+                                <strong>Ribbon</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="perintah" class="py-5">
+            <div class="container py-4">
+                <h2 class="section-title text-center mb-5">Perintah Dasar AutoCAD</h2>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title"><i class="fas fa-minus me-2"></i>LINE (L)</h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Membuat garis lurus</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Klik ikon Line</li>
+                                    <li>Klik titik awal dan titik akhir</li>
+                                    <li>Tekan Enter untuk selesai menggambar garis lurus</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: L</span>
+                                    <span class="badge bg-primary">Draw</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/LpV041o91WA"
+                                    title="LINE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="far fa-circle me-2"></i>CIRCLE (C)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Membuat lingkaran</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Klik ikon Circle</li>
+                                    <li>Klik titik pusat</li>
+                                    <li>Masukkan radius atau klik titik kedua</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: C</span>
+                                    <span class="badge bg-primary">Draw</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/vaDbUB701lA"
+                                    title="CIRCLE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="far fa-square me-2"></i>RECTANGLE (REC)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Membuat persegi panjang</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Klik ikon Rectangle</li>
+                                    <li>Klik titik sudut pertama</li>
+                                    <li>Klik titik sudut kedua untuk membuat persegi panjang</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: REC</span>
+                                    <span class="badge bg-primary">Draw</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/o85f3rqjcgQ"
+                                    title="RECTANGLE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fas fa-arrows-alt me-2"></i>MOVE (M)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Memindahkan objek</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Pilih objek yang akan dipindahkan</li>
+                                    <li>Klik ikon Move</li>
+                                    <li>Klik titik base point</li>
+                                    <li>Klik titik tujuan</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: M</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/PIkHIHSlQyw"
+                                    title="MOVE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title"><i class="far fa-copy me-2"></i>COPY (CO)</h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Menggandakan objek</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Pilih objek yang akan dicopy</li>
+                                    <li>Klik ikon Copy</li>
+                                    <li>Tentukan base point</li>
+                                    <li>Klik titik tujuan</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: CO</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/N4MwNhcnKzc"
+                                    title="COPY Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-rotate"></i>ROTATE (RO)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Memutar objek terhadap titik pusat</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Pilih objek → Enter</li>
+                                    <li>Tentukan titik putar</li>
+                                    <li>Masukkan sudut rotasi atau klik arah putaran</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: RO</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/Z8qIwNEaF0E"
+                                    title="ROTATE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-circle-notch"></i>ARC (A)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Membuat garis lengkung atau busur (bagian dari lingkaran).</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik A → Enter</li>
+                                    <li>Klik titik awal</li>
+                                    <li>Klik titik tengah busur</li>
+                                    <li>Klik titik akhir busur</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: A</span>
+                                    <span class="badge bg-info">Draw</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/r0jN-uF1fPU"
+                                    title="ARC Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-draw-polygon"></i>POLYLINE (PL)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>
+                                    Membuat garis terhubung (segmen garis atau lengkung) sebagai
+                                    satu kesatuan objek.
+                                </p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik PL → Enter</li>
+                                    <li>Klik titik awal</li>
+                                    <li>Klik titik selanjutnya untuk membuat segmen</li>
+                                    <li>Tekan Enter untuk menyelesaikan</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: PL</span>
+                                    <span class="badge bg-info">Draw</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/0oeZY9Pw-Tc"
+                                    title="POLYLINE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-arrows-left-right"></i>STRETCH (S)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Menarik atau memanjangkan bagian objek</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Gunakan crossing window (kanan ke kiri)</li>
+                                    <li>Ketik S → Enter</li>
+                                    <li>Tentukan base point → tarik ke arah yang diinginkan</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: S</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/RxBSSh6_NBc"
+                                    title="STRETCH Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-arrow-right-long"></i>EXTEND (EX)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Memperpanjang garis hingga menyentuh batas tertentu</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik EX → Enter dua kali</li>
+                                    <li>Klik objek yang akan diperpanjang</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: EX</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/pryJSdC5dm4"
+                                    title="EXTEND Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-scissors"></i>TRIM (TR)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Memotong bagian objek yang tidak diperlukan</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik TR → Enter dua kali</li>
+                                    <li>Klik bagian objek yang ingin dipotong</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: TR</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/X6T4NRa_W2s"
+                                    title="TRIM Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-burst"></i>EXPLODE (X)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>
+                                    Memecah objek kompleks (misalnya block, polyline) menjadi
+                                    bagian-bagian terpisah
+                                </p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Pilih objek</li>
+                                    <li>Ketik X → Enter</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: X</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/LDgi60OqqZk"
+                                    title="EXPLODE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-clone"></i>MIRROR (MI)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Membuat bayangan cermin dari suatu objek</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Pilih objek → Enter</li>
+                                    <li>Tentukan dua titik garis mirror</li>
+                                    <li>Ketik Y atau N untuk menghapus objek asli</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: MI</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/JWvxN1FI5sA"
+                                    title="MIRROR Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-grip"></i>ARRAY (AR)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Menggandakan objek dalam pola tertentu</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik AR → Enter</li>
+                                    <li>Pilih objek, tentukan jenis dan pengaturannya</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: AR</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/wc98V_im9f4"
+                                    title="ARRAY Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-maximize"></i>SCALE (SC)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>
+                                    Memperbesar atau memperkecil ukuran objek dengan faktor skala tertentu.
+                                </p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik SC → tekan Enter</li>
+                                    <li>Pilih objek yang ingin diubah → Enter</li>
+                                    <li>Tentukan base point (titik acuan skala)</li>
+                                    <li>Masukkan faktor skala → Enter</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: SC</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/HbVshUoJ79M"
+                                    title="SCALE Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-object-ungroup"></i>OFFSET (O)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>
+                                    Membuat salinan objek sejajar pada jarak tertentu dari objek asli.
+                                </p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik O → tekan Enter</li>
+                                    <li>Masukkan jarak offset → Enter</li>
+                                    <li>Klik objek yang akan di-offset</li>
+                                    <li>Klik di sisi arah offset (dalam/luar, kanan/kiri, atas/bawah)</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: O</span>
+                                    <span class="badge bg-info">Modify</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/l7nWaacMOZ0"
+                                    title="OFFSET Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-fill-drip"></i>HATCH (H)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Mengisi area tertutup dengan pola/tekstur</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik H → Enter</li>
+                                    <li>Pilih area tertutup atau klik titik dalam batas</li>
+                                    <li>Pilih jenis hatch dan skala</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: H</span>
+                                    <span class="badge bg-info">Draw</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/bIuNpavw0E0"
+                                    title="HATCH Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title"><i class="fa-solid fa-cube"></i>BLOCK (B)</h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Menggabungkan objek menjadi satu kesatuan reusable</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik B → Enter</li>
+                                    <li>Beri nama block, pilih objek, tentukan base point</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: B</span>
+                                    <span class="badge bg-info">Block</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/Qm71ITuNBfM"
+                                    title="BLOCK Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-paintbrush"></i>MATCH PROPERTIES (MA)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>
+                                    Menyalin properti objek (warna, layer, line type) ke objek lain
+                                </p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik MA → Enter</li>
+                                    <li>Klik objek sumber</li>
+                                    <li>Klik objek target</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: MA</span>
+                                    <span class="badge bg-info">Layers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/70_ilEzNoYg"
+                                    title="MATCH PROPERTIES Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-4 command-info">
+                            <h3 class="command-title">
+                                <i class="fa-solid fa-ruler-horizontal"></i>DIMENSION (DIM)
+                            </h3>
+                            <div class="bg-light p-3 rounded">
+                                <h6 class="text-primary">Fungsi:</h6>
+                                <p>Memberi ukuran objek (panjang, sudut, radius, diameter)</p>
+                                <h6 class="text-primary">Langkah:</h6>
+                                <ol class="ps-3 mb-0">
+                                    <li>Ketik DIM → Enter</li>
+                                    <li>Klik dua titik untuk memberi ukuran</li>
+                                </ol>
+                                <div class="mt-3">
+                                    <span class="badge bg-secondary me-2">Shortcut: DIM</span>
+                                    <span class="badge bg-info">Annotation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div style="position: relative; width: 100%; padding-bottom: 56.25%">
+                                <iframe
+                                    style="
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                    src="https://www.youtube.com/embed/KVx8x06_n2A"
+                                    title="DIMENSION Command Tutorial"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="latihan" class="py-5 bg-light">
+            <div class="container py-4">
+                <h2 class="section-title text-center mb-5">Latihan Membuat Denah</h2>
+                <p class="text-center text-muted mb-5 w-75 mx-auto">
+                    Perhatikan denah yang telah disediakan dibawah ini, kemudian buatlah salinan
+                    yang identik dengan menggunakan software AutoCAD dengan memperhatikan semua
+                    detail ruangan, pintu, jendela, serta proporsi ukuran yang tepat.
+                </p>
+                <img src="img\1-Model.png" alt="Latihan Denah" class="img-fluid rounded" />
+            </div>
+        </section>
+
+        <section id="kontak" class="py-5 bg-dark text-white">
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h2 class="section-title text-white">Mari bekerja sama.</h2>
+                        <img src="img\R.jpg" alt="ARS UPI" class="img-fluid rounded" />
+                        <div class="mt-4">
+                            <a href="#" class="btn btn-primary me-2"
+                                ><i class="fab fa-whatsapp me-2"></i>WhatsApp</a
+                            >
+                            <a href="#" class="btn btn-outline-light"
+                                ><i class="far fa-envelope me-2"></i>Email</a
+                            >
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-black p-4 rounded">
+                            <h3 class="fs-4 mb-4">Informasi Kontak</h3>
+                            <div class="d-flex mb-4">
+                                <div
+                                    class="bg-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                    style="width: 50px; height: 50px"
+                                >
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white mb-2">Alamat Surat</h6>
+                                    <p class="text-light mb-0">
+                                        Jl. Setiabudi No. 207, Kota Bandung, Jawa Barat 40154
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div
+                                    class="bg-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                    style="width: 50px; height: 50px"
+                                >
+                                    <i class="fas fa-phone-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white mb-2">Nomor Telepon</h6>
+                                    <p class="text-light mb-0">(022) 2013163</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div
+                                    class="bg-primary rounded-circle d-flex justify-content-center align-items-center me-3"
+                                    style="width: 50px; height: 50px"
+                                >
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="text-white mb-2">Alamat Email</h6>
+                                    <p class="text-light mb-0">arsitektur@upi.edu</p>
+                                </div>
+                            </div>
+                            <hr class="my-4" />
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama Lengkap</label>
+                                    <input
+                                        type="text"
+                                        class="form-control bg-dark text-white border-0"
+                                        id="name"
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input
+                                        type="email"
+                                        class="form-control bg-dark text-white border-0"
+                                        id="email"
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Pesan</label>
+                                    <textarea
+                                        class="form-control bg-dark text-white border-0"
+                                        id="message"
+                                        rows="3"
+                                    ></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="mb-3">AutoCAD Training</h5>
+                        <p class="text-muted small">
+                            Kami memberikan solusi terbaik dalam pelatihan AutoCAD untuk kebutuhan
+                            profesional maupun akademis Anda.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="mb-0">© 2025 AutoCAD Training. All rights reserved.</p>
+                        <div class="mt-2">
+                            <a
+                                href="https://facebook.com/arsitektur.upi"
+                                class="text-decoration-none me-3"
+                                ><i class="fab fa-facebook"></i
+                            ></a>
+                            <a
+                                href="https://www.instagram.com/arsitektur_upi"
+                                class="text-decoration-none me-3"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                            <a
+                                href="https://www.youtube.com/@arsitekturupi6650"
+                                class="text-decoration-none me-3"
+                                ><i class="fab fa-youtube"></i
+                            ></a>
+                            <a href="https://arsitektur.upi.edu/#" class="text-decoration-none"
+                                ><i class="fab fa-linkedin"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#" class="scroll-to-top btn btn-primary rounded-circle p-3">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 50) {
+                    document.querySelector(".navbar").classList.add("scrolled");
+                    document.querySelector(".scroll-to-top").classList.add("active");
+                } else {
+                    document.querySelector(".navbar").classList.remove("scrolled");
+                    document.querySelector(".scroll-to-top").classList.remove("active");
+                }
+            });
+        </script>
+    </body>
+</html>
